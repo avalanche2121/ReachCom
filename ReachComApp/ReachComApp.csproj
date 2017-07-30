@@ -33,6 +33,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Reach.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>ReachComApp.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -109,6 +115,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Ignition switch-WF.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Grn-Accounting-01-WF.ico" />
+    <Resource Include="Grn-Apps on computer-WF.ico" />
+    <Resource Include="Grn-Clapper-Board-01.ico" />
+    <Resource Include="Grn-Clapper-Board-02.ico" />
+    <Resource Include="Grn-Data Error-WF.ico" />
+    <Resource Include="Grn-Solutions - 02.ico" />
+    <Resource Include="Grn-Warning-Shield.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Check-03.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -24,5 +24,12 @@ namespace ReachComApp
         {
             InitializeComponent();
         }
+
+
+
+        private void TabControlMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

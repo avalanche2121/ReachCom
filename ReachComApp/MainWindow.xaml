@@ -37,6 +37,7 @@
             Grid.ColumnSpan="5"
             MinHeight="580"
             VerticalAlignment="Top"
+            SelectionChanged="TabControlMain_SelectionChanged"
             TabStripPlacement="Left">
             <TabItem Name="TabItemIntro">
                 <TabItem.Header>
@@ -59,24 +60,39 @@
                     <RichTextBox
                         Grid.Row="1"
                         MinWidth="575"
-                        MinHeight="300"
+                        MinHeight="250"
                         Margin="5"
                         HorizontalScrollBarVisibility="Auto"
+                        IsReadOnly="True"
                         VerticalScrollBarVisibility="Auto">
                         <FlowDocument>
                             <Paragraph
                                 FontSize="18"
                                 FontWeight="Bold"
                                 TextAlignment="Center">
-                                Introduction to Reach Com Generator
+                                <Run Text="Introduction to Reach Com Generator" />
                             </Paragraph>
-                            <Paragraph FontSize="14" FontWeight="Bold">The application is design to help generate the information required in Reach Com's.  It will improve accuracy and lessen the time required.</Paragraph>
-                            <Paragraph FontSize="14" FontWeight="Bold">The application works the following order:</Paragraph>
-                            <Paragraph FontSize="14" LineHeight="8">1.  Seal Application - Select the Application from the Grid and Confirm selection</Paragraph>
-                            <Paragraph FontSize="14" LineHeight="8">2.  Error - Select the Error from the Grid that best matches and Confirm selection</Paragraph>
-                            <Paragraph FontSize="14" LineHeight="8">3.  Current Action - Select the Action currently underway and Confirm selection</Paragraph>
-                            <Paragraph FontSize="14" LineHeight="8">4.  Impacts - Select the known Impacts and Confirm selection</Paragraph>
-                            <Paragraph FontSize="14" LineHeight="8">5.  Reach Posting - Review, customize and copy into the Reach Com website</Paragraph>
+                            <Paragraph FontSize="14" FontWeight="Bold">
+                                <Run Text="The application is designed to help generate the information required in Reach Com's. It will improve accuracy and reduce the time required." />
+                            </Paragraph>
+                            <Paragraph FontSize="14" FontWeight="Bold">
+                                <Run Text="The application works in the following order:" />
+                            </Paragraph>
+                            <Paragraph FontSize="14" LineHeight="8">
+                                <Run Text="1. Seal Application - Select the Application from the Grid and Confirm selection" />
+                            </Paragraph>
+                            <Paragraph FontSize="14" LineHeight="8">
+                                <Run Text="2. Error - Select the Error from the Grid that best matches and Confirm selection" />
+                            </Paragraph>
+                            <Paragraph FontSize="14" LineHeight="8">
+                                <Run Text="3. Current Action - Select the Action currently underway and Confirm selection" />
+                            </Paragraph>
+                            <Paragraph FontSize="14" LineHeight="8">
+                                <Run Text="4. Impacts - Select the known Impacts and Confirm selection" />
+                            </Paragraph>
+                            <Paragraph FontSize="14" LineHeight="8">
+                                <Run Text="5. Reach Posting - Review, Customize and Copy into the Reach Com website" />
+                            </Paragraph>
 
                         </FlowDocument>
                     </RichTextBox>
@@ -98,7 +114,7 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50" />
                         <RowDefinition Height="2*" />
-                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="25" />
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -107,6 +123,17 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
+                    <Button
+                        Name="ButoonSealAppConfirm"
+                        Grid.Row="3"
+                        Grid.Column="3"
+                        Width="125"
+                        Height="36">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Check-03.ico" />
+                            <TextBlock Margin="5" TextAlignment="Right">Confirm App</TextBlock>
+                        </StackPanel>
+                    </Button>
 
 
                 </Grid>
@@ -129,7 +156,33 @@
                             Text="Error                 " />
                     </StackPanel>
                 </TabItem.Header>
-                <Grid Background="#FFE5E5E5" />
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="25" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Name="ButoonErrorConfirm"
+                        Grid.Row="3"
+                        Grid.Column="3"
+                        Width="125"
+                        Height="36">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Check-03.ico" />
+                            <TextBlock Margin="5" TextAlignment="Right">Confirm Error</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+
+                </Grid>
             </TabItem>
             <TabItem Name="TabItemCurrentAction">
                 <TabItem.Header>
@@ -149,7 +202,33 @@
                             Text="Current Action" />
                     </StackPanel>
                 </TabItem.Header>
-                <Grid Background="#FFE5E5E5" />
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="25" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Name="ButoonCurrentActionConfirm"
+                        Grid.Row="3"
+                        Grid.Column="3"
+                        Width="125"
+                        Height="36">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Check-03.ico" />
+                            <TextBlock Margin="5" TextAlignment="Right">Confirm Action</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+
+                </Grid>
             </TabItem>
             <TabItem Name="TabItemImpacts">
                 <TabItem.Header>
@@ -169,7 +248,33 @@
                             Text="Impacts" />
                     </StackPanel>
                 </TabItem.Header>
-                <Grid Background="#FFE5E5E5" />
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="25" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Name="ButoonCurrentImpactsConfirm"
+                        Grid.Row="3"
+                        Grid.Column="3"
+                        Width="125"
+                        Height="36">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Check-03.ico" />
+                            <TextBlock Margin="5" TextAlignment="Right">Confirm Impacts</TextBlock>
+                        </StackPanel>
+                    </Button>
+
+
+                </Grid>
             </TabItem>
             <TabItem Name="TabItemReachPosting">
                 <TabItem.Header>
@@ -189,7 +294,23 @@
                             Text="Reach Posting" />
                     </StackPanel>
                 </TabItem.Header>
-                <Grid Background="#FFE5E5E5" />
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <RichTextBox
+                        Grid.Row="1"
+                        MinWidth="575"
+                        MinHeight="250"
+                        Margin="5"
+                        HorizontalScrollBarVisibility="Auto"
+                        IsReadOnly="False"
+                        VerticalScrollBarVisibility="Auto">
+                        <FlowDocument />
+                    </RichTextBox>
+                </Grid>
             </TabItem>
             <TabItem Name="TabItemHelp">
                 <TabItem.Header>
