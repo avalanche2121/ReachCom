@@ -128,5 +128,8 @@
   <ItemGroup>
     <Resource Include="Check-03.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Racing Flag-WF.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
