@@ -91,6 +91,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ExcelData\REACH.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\DataSources\ReachComData.CurrentAction.datasource" />
+    <None Include="Properties\DataSources\ReachComData.DataLayer.datasource" />
+    <None Include="Properties\DataSources\ReachComData.ErrorLookup.datasource" />
+    <None Include="Properties\DataSources\ReachComData.SealApp.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -130,6 +137,33 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Racing Flag-WF.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Command-Reset.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ReachComData\ReachComData.csproj">
+      <Project>{91dbd022-8774-416c-a2f4-446bc1b8ec4c}</Project>
+      <Name>ReachComData</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Incoming Call.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Bank.ico" />
+    <Resource Include="Clock-01.ico" />
+    <Resource Include="Paper-WF.ico" />
+    <Resource Include="Sales Order-WF.ico" />
+    <Resource Include="Savings1-WF.ico" />
+    <Resource Include="Transaction-Fee.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Agreement-01.ico" />
+    <Resource Include="Alarm-Clock.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Hour Glass-WF.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
