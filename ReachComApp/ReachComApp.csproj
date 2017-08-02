@@ -165,5 +165,69 @@
   <ItemGroup>
     <Resource Include="Hour Glass-WF.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon32GRN\24_7-Suppport-WF.ico" />
+    <Resource Include="icon32GRN\Accounting-01-WF.ico" />
+    <Resource Include="icon32GRN\Agreement-01.ico" />
+    <Resource Include="icon32GRN\Alarm-Clock.ico" />
+    <Resource Include="icon32GRN\Apps on computer-01-WF.ico" />
+    <Resource Include="icon32GRN\Apps on computer-WF.ico" />
+    <Resource Include="icon32GRN\Arrow-WF.ico" />
+    <Resource Include="icon32GRN\Bank.ico" />
+    <Resource Include="icon32GRN\Check-03.ico" />
+    <Resource Include="icon32GRN\Clapper-Board-01.ico" />
+    <Resource Include="icon32GRN\Clapper-Board-02.ico" />
+    <Resource Include="icon32GRN\Clock-01.ico" />
+    <Resource Include="icon32GRN\Command-Reset.ico" />
+    <Resource Include="icon32GRN\Data Error-WF.ico" />
+    <Resource Include="icon32GRN\File Setting-WF.ico" />
+    <Resource Include="icon32GRN\Flow-Cart.ico" />
+    <Resource Include="icon32GRN\Help - 02.ico" />
+    <Resource Include="icon32GRN\Hour Glass-WF.ico" />
+    <Resource Include="icon32GRN\Ignition switch-WF.ico" />
+    <Resource Include="icon32GRN\Incoming Call.ico" />
+    <Resource Include="icon32GRN\Menu - 05.ico" />
+    <Resource Include="icon32GRN\Paper-WF.ico" />
+    <Resource Include="icon32GRN\Proceed-Marked-Headers.ico" />
+    <Resource Include="icon32GRN\Racing Flag-WF.ico" />
+    <Resource Include="icon32GRN\Reach.ico" />
+    <Resource Include="icon32GRN\Sales Order-WF.ico" />
+    <Resource Include="icon32GRN\Savings1-WF.ico" />
+    <Resource Include="icon32GRN\Solutions - 02.ico" />
+    <Resource Include="icon32GRN\Transaction-Fee.ico" />
+    <Resource Include="icon32GRN\Warning-Shield.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon48grn\24_7-Suppport-WF.ico" />
+    <Resource Include="icon48grn\Accounting-01-WF.ico" />
+    <Resource Include="icon48grn\Agreement-01.ico" />
+    <Resource Include="icon48grn\Alarm-Clock.ico" />
+    <Resource Include="icon48grn\Apps on computer-01-WF.ico" />
+    <Resource Include="icon48grn\Apps on computer-WF.ico" />
+    <Resource Include="icon48grn\Arrow-WF.ico" />
+    <Resource Include="icon48grn\Bank.ico" />
+    <Resource Include="icon48grn\Check-03.ico" />
+    <Resource Include="icon48grn\Clapper-Board-01.ico" />
+    <Resource Include="icon48grn\Clapper-Board-02.ico" />
+    <Resource Include="icon48grn\Clock-01.ico" />
+    <Resource Include="icon48grn\Command-Reset.ico" />
+    <Resource Include="icon48grn\Data Error-WF.ico" />
+    <Resource Include="icon48grn\File Setting-WF.ico" />
+    <Resource Include="icon48grn\Flow-Cart.ico" />
+    <Resource Include="icon48grn\Help - 02.ico" />
+    <Resource Include="icon48grn\Hour Glass-WF.ico" />
+    <Resource Include="icon48grn\Ignition switch-WF.ico" />
+    <Resource Include="icon48grn\Incoming Call.ico" />
+    <Resource Include="icon48grn\Menu - 05.ico" />
+    <Resource Include="icon48grn\Paper-WF.ico" />
+    <Resource Include="icon48grn\Proceed-Marked-Headers.ico" />
+    <Resource Include="icon48grn\Racing Flag-WF.ico" />
+    <Resource Include="icon48grn\Reach.ico" />
+    <Resource Include="icon48grn\Sales Order-WF.ico" />
+    <Resource Include="icon48grn\Savings1-WF.ico" />
+    <Resource Include="icon48grn\Solutions - 02.ico" />
+    <Resource Include="icon48grn\Transaction-Fee.ico" />
+    <Resource Include="icon48grn\Warning-Shield.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

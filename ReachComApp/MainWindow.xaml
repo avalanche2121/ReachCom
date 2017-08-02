@@ -119,7 +119,10 @@
             <TabItem x:Name="TabItemSealApp" TabIndex="1">
                 <TabItem.Header>
                     <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                        <Image MaxHeight="32" Source="Apps on computer-WF.ico" />
+                        <Image
+                            Name="ImageApps"
+                            MaxHeight="32"
+                            Source="Apps on computer-WF.ico" />
                         <TextBlock
                             x:Name="TextBlockSealApplication"
                             Width="96"
@@ -163,7 +166,8 @@
                         EnableRowVirtualization="True"
                         IsReadOnly="True"
                         ItemsSource="{Binding}"
-                        RowDetailsVisibilityMode="VisibleWhenSelected">
+                        RowDetailsVisibilityMode="VisibleWhenSelected"
+                        SelectionMode="Single">
                         <DataGrid.Columns>
                             <DataGridTextColumn
                                 x:Name="sealIdColumn"
@@ -211,6 +215,7 @@
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
                         <Image
+                            Name="ImageError"
                             MaxHeight="32"
                             HorizontalAlignment="Left"
                             Source="Warning-Shield.ico" />
@@ -256,7 +261,8 @@
                         IsReadOnly="True"
                         ItemsSource="{Binding}"
                         RowDetailsVisibilityMode="VisibleWhenSelected"
-                        SelectionChanged="errorLookupDataGrid_SelectionChanged">
+                        SelectionChanged="errorLookupDataGrid_SelectionChanged"
+                        SelectionMode="Single">
                         <DataGrid.Columns>
                             <DataGridTextColumn
                                 x:Name="titleColumn1"
@@ -297,6 +303,7 @@
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
                         <Image
+                            Name="ImageCurrentAction"
                             MaxHeight="32"
                             HorizontalAlignment="Left"
                             Source="Clapper-Board-01.ico" />
@@ -341,7 +348,8 @@
                         EnableRowVirtualization="True"
                         IsReadOnly="True"
                         ItemsSource="{Binding}"
-                        RowDetailsVisibilityMode="VisibleWhenSelected">
+                        RowDetailsVisibilityMode="VisibleWhenSelected"
+                        SelectionMode="Single">
                         <DataGrid.Columns>
                             <DataGridTextColumn
                                 x:Name="actionColumn"
@@ -378,6 +386,7 @@
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
                         <Image
+                            Name="ImageImpacts"
                             MaxHeight="32"
                             HorizontalAlignment="Left"
                             Source="Accounting-01-WF.ico" />
@@ -519,9 +528,11 @@
                         Margin="10"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
+                        Checked="CheckBoxCustomerCalls_Checked"
                         Content="Received ?"
                         FontSize="12"
-                        FontWeight="Medium" />
+                        FontWeight="Medium"
+                        Unchecked="CheckBoxCustomerCalls_Unchecked" />
                     <CheckBox
                         Name="CheckBoxReports"
                         Grid.Row="2"
@@ -529,9 +540,11 @@
                         Margin="10"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
+                        Checked="CheckBoxReports_Checked"
                         Content="Impacted ?"
                         FontSize="12"
-                        FontWeight="Medium" />
+                        FontWeight="Medium"
+                        Unchecked="CheckBoxReports_Unchecked" />
                     <CheckBox
                         Name="CheckBoxTransactions"
                         Grid.Row="3"
@@ -539,9 +552,11 @@
                         Margin="10"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
+                        Checked="CheckBoxTransactions_Checked"
                         Content="Impacted ?"
                         FontSize="12"
-                        FontWeight="Medium" />
+                        FontWeight="Medium"
+                        Unchecked="CheckBoxTransactions_Unchecked" />
                     <CheckBox
                         Name="CheckBoxFinancial"
                         Grid.Row="4"
@@ -549,9 +564,11 @@
                         Margin="10"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
+                        Checked="CheckBoxFinancial_Checked"
                         Content="Impacts ?"
                         FontSize="12"
-                        FontWeight="Medium" />
+                        FontWeight="Medium"
+                        Unchecked="CheckBoxFinancial_Unchecked" />
                     <CheckBox
                         Name="CheckBoxSla"
                         Grid.Row="5"
@@ -559,6 +576,7 @@
                         Margin="10"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
+                        Checked="CheckBoxSla_Checked"
                         Content="Impacted or Missed ?"
                         FontSize="12"
                         FontWeight="Medium" />
@@ -573,7 +591,122 @@
                         VerticalAlignment="Top"
                         Text="HH:MM A/PM"
                         TextWrapping="Wrap" />
-
+                    <Label
+                        Name="LabelCustomerCall"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Height="32"
+                        Margin="10"
+                        Padding="2"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Content="How Many Calls?"
+                        FontSize="12"
+                        FontWeight="Bold" />
+                    <Label
+                        Name="LabelReports"
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Height="32"
+                        Margin="10"
+                        Padding="2"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Content="How Many Reports?"
+                        FontSize="12"
+                        FontWeight="Bold" />
+                    <Label
+                        Name="LabelTransactions"
+                        Grid.Row="3"
+                        Grid.Column="2"
+                        Height="32"
+                        Margin="10"
+                        Padding="0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Content="How Many Transactions?"
+                        FontSize="12"
+                        FontWeight="Bold" />
+                    <Label
+                        Name="LabelFinancials"
+                        Grid.Row="4"
+                        Grid.Column="2"
+                        Height="32"
+                        Margin="10"
+                        Padding="0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Content="What is Dollars?"
+                        FontSize="12"
+                        FontWeight="Bold" />
+                    <Label
+                        Name="LabelSla"
+                        Grid.Row="5"
+                        Grid.Column="2"
+                        Height="32"
+                        Margin="10"
+                        Padding="0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Content="SLA Details?"
+                        FontSize="12"
+                        FontWeight="Bold" />
+                    <TextBox
+                        Name="TextBoxCustomerCall"
+                        Grid.Row="1"
+                        Grid.Column="3"
+                        Width="120"
+                        Height="23"
+                        Margin="10"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Text="0"
+                        TextChanged="TextBoxCustomerCall_TextChanged"
+                        TextWrapping="Wrap" />
+                    <TextBox
+                        Name="TextBoxReports"
+                        Grid.Row="2"
+                        Grid.Column="3"
+                        Width="120"
+                        Height="23"
+                        Margin="10"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Text="0"
+                        TextWrapping="Wrap" />
+                    <TextBox
+                        Name="TextBoxTransactions"
+                        Grid.Row="3"
+                        Grid.Column="3"
+                        Width="120"
+                        Height="23"
+                        Margin="10"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Text="0"
+                        TextWrapping="Wrap" />
+                    <TextBox
+                        Name="TextBoxFinancials"
+                        Grid.Row="4"
+                        Grid.Column="3"
+                        Width="120"
+                        Height="23"
+                        Margin="10"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Text="$0.00"
+                        TextWrapping="Wrap" />
+                    <TextBox
+                        Name="TextBoxSla"
+                        Grid.Row="5"
+                        Grid.Column="3"
+                        Width="120"
+                        Height="23"
+                        Margin="10"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Text=""
+                        TextWrapping="Wrap" />
                 </Grid>
             </TabItem>
             <TabItem x:Name="TabItemReachPosting" TabIndex="5">
@@ -602,12 +735,14 @@
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
                     <RichTextBox
+                        Name="RichTextBoxReachPosting"
                         Grid.Row="1"
                         MinWidth="575"
                         MinHeight="250"
                         Margin="5"
                         HorizontalScrollBarVisibility="Auto"
                         IsReadOnly="False"
+                        SpellCheck.IsEnabled="True"
                         VerticalScrollBarVisibility="Auto">
                         <FlowDocument />
                     </RichTextBox>
