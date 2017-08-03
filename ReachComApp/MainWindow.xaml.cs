@@ -99,7 +99,7 @@ namespace ReachComApp
             }
 
             //How many Reports impacted?
-            if (TextBoxReports.Text.Length > 0)
+            if (CheckBoxReports.IsChecked != null && (bool)CheckBoxReports.IsChecked)
             {
                 textIssueParagraph.Inlines.Add(new Run(("Transactions Affected - ")));
                 textIssueParagraph.Inlines.Add(new Run((_comReach.ReportCount)));
@@ -108,7 +108,7 @@ namespace ReachComApp
             }
 
             //What is the Financial Impacts in Dollars?
-            if (TextBoxFinancials.Text.Length > 0)
+            if (CheckBoxFinancial.IsChecked != null && (bool)CheckBoxFinancial.IsChecked)
             {
                 textIssueParagraph.Inlines.Add(new Run(("Financial Impacts - ")));
                 textIssueParagraph.Inlines.Add(new Run((_comReach.FinancialAmount)));
