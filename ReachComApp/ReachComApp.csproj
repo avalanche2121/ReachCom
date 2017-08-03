@@ -107,12 +107,24 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Accounting-01-WF.ico" />
-    <Resource Include="Apps on computer-01-WF.ico" />
-    <Resource Include="Apps on computer-WF.ico" />
-    <Resource Include="Arrow-WF.ico" />
-    <Resource Include="Clapper-Board-01.ico" />
-    <Resource Include="Clapper-Board-02.ico" />
+    <Resource Include="Accounting-01-WF.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Apps on computer-01-WF.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Apps on computer-WF.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Arrow-WF.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Clapper-Board-01.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Clapper-Board-02.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Data Error-WF.ico" />
     <Resource Include="File Setting-WF.ico" />
     <Resource Include="Help - 02.ico" />
@@ -133,7 +145,9 @@
     <Resource Include="Grn-Warning-Shield.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Check-03.ico" />
+    <Resource Include="Check-03.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Racing Flag-WF.ico" />
@@ -151,7 +165,9 @@
     <Resource Include="Incoming Call.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Bank.ico" />
+    <Resource Include="Bank.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Clock-01.ico" />
     <Resource Include="Paper-WF.ico" />
     <Resource Include="Sales Order-WF.ico" />
@@ -159,17 +175,29 @@
     <Resource Include="Transaction-Fee.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Agreement-01.ico" />
-    <Resource Include="Alarm-Clock.ico" />
+    <Resource Include="Agreement-01.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Alarm-Clock.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Hour Glass-WF.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icon32GRN\24_7-Suppport-WF.ico" />
-    <Resource Include="icon32GRN\Accounting-01-WF.ico" />
-    <Resource Include="icon32GRN\Agreement-01.ico" />
-    <Resource Include="icon32GRN\Alarm-Clock.ico" />
+    <Resource Include="icon32GRN\24_7-Suppport-WF.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="icon32GRN\Accounting-01-WF.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="icon32GRN\Agreement-01.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="icon32GRN\Alarm-Clock.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="icon32GRN\Apps on computer-01-WF.ico" />
     <Resource Include="icon32GRN\Apps on computer-WF.ico" />
     <Resource Include="icon32GRN\Arrow-WF.ico" />

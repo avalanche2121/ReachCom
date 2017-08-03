@@ -179,6 +179,13 @@
                                 Width="*"
                                 Binding="{Binding Title}"
                                 Header="Title" />
+                            <DataGridTextColumn
+                                x:Name="descriptionAppColumn"
+                                Width="0"
+                                Binding="{Binding DescriptionApp}"
+                                Header="Description App"
+                                Visibility="Collapsed" />
+
                         </DataGrid.Columns>
                     </DataGrid>
                     <Label
@@ -269,6 +276,12 @@
                                 Width="*"
                                 Binding="{Binding Title}"
                                 Header="Title" />
+                            <DataGridTextColumn
+                                x:Name="DescriptionErrorColumn"
+                                Width="0"
+                                Binding="{Binding DescriptionError}"
+                                Header="Description"
+                                Visibility="Collapsed" />
                         </DataGrid.Columns>
                     </DataGrid>
                     <Label
@@ -356,6 +369,12 @@
                                 Width="*"
                                 Binding="{Binding Action}"
                                 Header="Action" />
+                            <DataGridTextColumn
+                                x:Name="DescriptionActionColumn"
+                                Width="0"
+                                Binding="{Binding DescriptionAction}"
+                                Header="Description"
+                                Visibility="Collapsed" />
                         </DataGrid.Columns>
                     </DataGrid>
                     <Label
@@ -579,8 +598,10 @@
                         Checked="CheckBoxSla_Checked"
                         Content="Impacted or Missed ?"
                         FontSize="12"
-                        FontWeight="Medium" />
+                        FontWeight="Medium"
+                        Unchecked="CheckBoxSla_Unchecked_1" />
                     <TextBox
+                        Name="TextBoxStartTime"
                         Grid.Row="6"
                         Grid.RowSpan="2"
                         Grid.Column="1"
