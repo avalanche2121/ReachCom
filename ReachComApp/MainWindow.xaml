@@ -42,8 +42,10 @@
             Grid.RowSpan="4"
             Grid.Column="0"
             Grid.ColumnSpan="5"
-            MinHeight="525"
-            VerticalAlignment="Top"
+            MinHeight="530"
+            Margin="0"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
             SelectionChanged="TabControlMain_SelectionChanged"
             TabStripPlacement="Left">
             <TabItem x:Name="TabItemIntro" TabIndex="0">
@@ -72,6 +74,7 @@
                         Margin="5"
                         HorizontalScrollBarVisibility="Auto"
                         IsReadOnly="True"
+                        TextChanged="RichTextBox_TextChanged"
                         VerticalScrollBarVisibility="Auto">
                         <FlowDocument>
                             <Paragraph
@@ -131,7 +134,10 @@
                             Text="Seal Application" />
                     </StackPanel>
                 </TabItem.Header>
-                <Grid Background="#FFE5E5E5" DataContext="{StaticResource sealAppViewSource}">
+                <Grid
+                    Margin="0,-1,0,1"
+                    Background="#FFE5E5E5"
+                    DataContext="{StaticResource sealAppViewSource}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="25" />
                         <RowDefinition Height="2*" />
@@ -161,6 +167,7 @@
                     <DataGrid
                         x:Name="sealAppDataGrid"
                         Grid.Row="1"
+                        Grid.Column="0"
                         Grid.ColumnSpan="4"
                         AutoGenerateColumns="False"
                         EnableRowVirtualization="True"
@@ -262,6 +269,7 @@
                     <DataGrid
                         x:Name="errorLookupDataGrid"
                         Grid.Row="1"
+                        Grid.Column="0"
                         Grid.ColumnSpan="4"
                         AutoGenerateColumns="False"
                         EnableRowVirtualization="True"
@@ -356,6 +364,7 @@
                     <DataGrid
                         x:Name="currentActionDataGrid"
                         Grid.Row="1"
+                        Grid.Column="0"
                         Grid.ColumnSpan="4"
                         AutoGenerateColumns="False"
                         EnableRowVirtualization="True"
@@ -419,15 +428,15 @@
                 </TabItem.Header>
                 <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="50" />
                         <RowDefinition Height="40" />
                         <RowDefinition Height="40" />
                         <RowDefinition Height="40" />
                         <RowDefinition Height="40" />
                         <RowDefinition Height="40" />
                         <RowDefinition Height="40" />
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="75" />
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -799,7 +808,21 @@
                             Text="Help" />
                     </StackPanel>
                 </TabItem.Header>
-                <Grid Background="#FFE5E5E5" />
+                <Grid Background="#FFE5E5E5">
+                    <RichTextBox>
+                        <FlowDocument>
+                            <Paragraph FontWeight="Bold">
+                                <Run Text="Beta Version of the Reach Communication Generator" />
+                            </Paragraph>
+                            <Paragraph>
+                                <Run Text="Hello User and Tester of the RCG application.  The tool is designed to reduce the time required to generate Reach Com's.  However, as this is a BETA version of the application. It will have bug and other issues that have not been discovered." />
+                            </Paragraph>
+                            <Paragraph>
+                                <Run Text="If you discover and have a recommendation Please send a screen shot and a note on the issue to Albert Cheung" />
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                </Grid>
             </TabItem>
         </TabControl>
 

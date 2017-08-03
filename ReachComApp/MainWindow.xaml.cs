@@ -34,8 +34,8 @@ namespace ReachComApp
 
                 if (actionCurrent != null)
                 {
-                    _comReach.ErrorTitle = actionCurrent.Action;
-                    _comReach.ErrorDescription = actionCurrent.DescriptionAction;
+                    _comReach.ActionTitle = actionCurrent.Action;
+                    _comReach.ActionDescription = actionCurrent.DescriptionAction;
                 }
             }
 
@@ -57,26 +57,95 @@ namespace ReachComApp
             Paragraph textStartTime = new Paragraph();
             textStartTime.Inlines.Add(new Run("Issue Start Time is "));
             textStartTime.Inlines.Add(new Run(_comReach.StartTime));
-            textStartTime.FontSize = 14;
-            FontWeight fontWeight;
-            fontWeight = FontWeights.Bold;
-            textStartTime.FontWeight = fontWeight;
+
 
             //Application Information
-            Paragraph application = new Paragraph();
-            application.Inlines.Add(new Run("Application: "));
-            application.Inlines.Add(new Run(_comReach.AppTitle));
-            application.Inlines.Add(new Run("  "));
-            application.Inlines.Add(new Run("Seal Id: "));
-            application.Inlines.Add(new Run(_comReach.SealId.ToString()));
+            Paragraph textAppParagraph = new Paragraph();
+            textAppParagraph.Inlines.Add(new Run("Application: "));
+            textAppParagraph.Inlines.Add(new Run(_comReach.AppTitle));
+            textAppParagraph.Inlines.Add(new Run("  "));
+            textAppParagraph.Inlines.Add(new Run("Seal Id: "));
+            textAppParagraph.Inlines.Add(new Run(_comReach.SealId.ToString()));
 
             //Current Issue
-            var textIssues = new Paragraph();
-            textIssues.Inlines.Add(new Bold(new Run("Current Issues")));
+            Paragraph textIssuesTitleParagraph = new Paragraph();
+            textIssuesTitleParagraph.Inlines.Add(new Bold(new Run("Current Issues")));
 
+            //Error Condition
+            Paragraph textErrorParagraph = new Paragraph();
+            textErrorParagraph.Inlines.Add(new Run("Error - "));
+            textErrorParagraph.Inlines.Add(new Run(_comReach.ErrorDescription));
+
+
+            //Issue Details
+            Paragraph textIssueParagraph = new Paragraph();
+                
+            //How many Calls?
+            if (CheckBoxCustomerCalls.IsChecked != null && (bool) CheckBoxCustomerCalls.IsChecked)
+            {
+                textIssueParagraph.Inlines.Add(new Run(("Calls Received - ")));
+                textIssueParagraph.Inlines.Add(new Run((_comReach.CustomerCall)));
+                textIssueParagraph.Inlines.Add(new Run("\r"));
+            }
+
+
+            //How many Transactions impacted?
+            if (CheckBoxTransactions.IsChecked != null && (bool)CheckBoxTransactions.IsChecked)
+            {
+                textIssueParagraph.Inlines.Add(new Run(("Transactions Affected - ")));
+                textIssueParagraph.Inlines.Add(new Run((_comReach.TransactionCount)));
+                textIssueParagraph.Inlines.Add(new Run("\r"));
+
+            }
+
+            //How many Reports impacted?
+            if (TextBoxReports.Text.Length > 0)
+            {
+                textIssueParagraph.Inlines.Add(new Run(("Transactions Affected - ")));
+                textIssueParagraph.Inlines.Add(new Run((_comReach.ReportCount)));
+                textIssueParagraph.Inlines.Add(new Run("\r"));
+
+            }
+
+            //What is the Financial Impacts in Dollars?
+            if (TextBoxFinancials.Text.Length > 0)
+            {
+                textIssueParagraph.Inlines.Add(new Run(("Financial Impacts - ")));
+                textIssueParagraph.Inlines.Add(new Run((_comReach.FinancialAmount)));
+                textIssueParagraph.Inlines.Add(new Run("\r"));
+
+            }
+
+            //Have SLA's Been Impacted?
+            if (TextBoxSla.Text.Length > 0)
+            {
+                textIssueParagraph.Inlines.Add(new Run(("SLA Impacts - ")));
+                textIssueParagraph.Inlines.Add(new Run((_comReach.SlaInfo)));
+                textIssueParagraph.Inlines.Add(new Run("\r"));
+
+            }
+
+            //Remediation
+            Paragraph textRemediationParagraph = new Paragraph();
+            textRemediationParagraph.Inlines.Add(new Run("Current Remediation - "));
+            textRemediationParagraph.Inlines.Add(new Run(_comReach.ActionDescription));
+
+            //Application Details
+            Paragraph textApplicationParagraph = new Paragraph();
+            textApplicationParagraph.Inlines.Add(new Bold(new Run("Application \r")));
+            textApplicationParagraph.Inlines.Add(new Run(_comReach.AppDescription));
+
+            //Putting All together
+            RichTextBoxReachPosting.Document.Blocks.Add(textStartTime);
+            RichTextBoxReachPosting.Document.Blocks.Add(textAppParagraph);
+            RichTextBoxReachPosting.Document.Blocks.Add(textIssuesTitleParagraph);
+            RichTextBoxReachPosting.Document.Blocks.Add(textErrorParagraph);
+            RichTextBoxReachPosting.Document.Blocks.Add(textIssueParagraph);
+            RichTextBoxReachPosting.Document.Blocks.Add(textRemediationParagraph);
+            RichTextBoxReachPosting.Document.Blocks.Add(textApplicationParagraph);
 
             RichTextBoxReachPosting.Focus();
-            RichTextBoxReachPosting.ScrollToEnd();
+            RichTextBoxReachPosting.ScrollToHome();
         }
 
         private void ButoonCurrentImpactsConfirm_Click(object sender, RoutedEventArgs e)
@@ -109,7 +178,7 @@ namespace ReachComApp
             if (CheckBoxReports.IsChecked != null && (bool) CheckBoxReports.IsChecked)
                 _comReach.ReportCount = TextBoxReports.Text;
             else
-                _comReach.ReportCount = TextBoxReports.Text;
+                _comReach.ReportCount = "";
 
             if (CheckBoxFinancial.IsChecked != null && (bool) CheckBoxFinancial.IsChecked)
                 _comReach.FinancialAmount = TextBoxFinancials.Text;
@@ -316,6 +385,37 @@ namespace ReachComApp
         private void CheckBoxSla_Unchecked_1(object sender, RoutedEventArgs e)
         {
             Hideimpactquestions();
+        }
+
+        private void RichTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void resetinputs()
+        {
+            //Reset Checkboxes to unchecked
+            CheckBoxTransactions.IsChecked = false;
+            CheckBoxCustomerCalls.IsChecked = false;
+            CheckBoxFinancial.IsChecked = false;
+            CheckBoxReports.IsChecked = false;
+            CheckBoxSla.IsChecked = false;
+
+            //Reset Textbox inputs
+            TextBoxTransactions.Text = "0";
+            TextBoxCustomerCall.Text = "0";
+            TextBoxFinancials.Text = "$0.00";
+            TextBoxReports.Text = "0";
+            TextBoxSla.Text = "0";
+
+            TextBoxStartTime.Text = "00:00 AM/PM ET";
+
+            sealAppDataGrid.SelectedIndex = 0;
+            errorLookupDataGrid.SelectedIndex = 0;
+            currentActionDataGrid.SelectedIndex = 0;
+
+            RichTextBoxReachPosting.Document.Blocks.Clear();
+            
         }
     }
 }
