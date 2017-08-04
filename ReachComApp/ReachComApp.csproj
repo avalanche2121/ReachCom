@@ -257,5 +257,11 @@
     <Resource Include="icon48grn\Transaction-Fee.ico" />
     <Resource Include="icon48grn\Warning-Shield.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Business delete-01-WF.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Business delete-02-WF.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

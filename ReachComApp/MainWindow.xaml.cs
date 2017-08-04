@@ -12,7 +12,7 @@ namespace ReachComApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly ComReach _comReach;
+        private ComReach _comReach;
 
         public MainWindow()
         {
@@ -24,12 +24,22 @@ namespace ReachComApp
         private void ButonReset_Click(object sender, RoutedEventArgs e)
         {
             //Clear Contents
-            resetinputs();
+            Resetinputs();
 
             TabControlMain.SelectedIndex = 1;
         }
 
         private void ButoonCurrentActionConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            CurrentActionSelected();
+
+            PopulateReportData();
+
+            //Handle move to the next Tab
+            MoveToNextTab();
+        }
+
+        private void CurrentActionSelected()
         {
             foreach (var rowSelectedItem in currentActionDataGrid.SelectedItems)
             {
@@ -41,22 +51,22 @@ namespace ReachComApp
                     _comReach.ActionDescription = actionCurrent.DescriptionAction;
                 }
             }
-
-            //Handle move to the next Tab
-            if (TabControlMain.SelectedIndex == TabControlMain.Items.Count - 1)
-                TabControlMain.SelectedIndex = 0;
-            else
-                TabControlMain.SelectedIndex++;
         }
 
         private void ButoonCurrentImpactsConfirm_Click(object sender, RoutedEventArgs e)
         {
             PopulateReportData();
 
-
             //Build Reach Output
             RechComReport();
 
+            //Move to the Next Tab
+            MoveToNextTab();
+        }
+
+        private void ButoonErrorConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            ErrorLookupSelected();
 
             if (TabControlMain.SelectedIndex == TabControlMain.Items.Count - 1)
                 TabControlMain.SelectedIndex = 0;
@@ -64,7 +74,7 @@ namespace ReachComApp
                 TabControlMain.SelectedIndex++;
         }
 
-        private void ButoonErrorConfirm_Click(object sender, RoutedEventArgs e)
+        private void ErrorLookupSelected()
         {
             foreach (var rowSelectedItem in errorLookupDataGrid.SelectedItems)
             {
@@ -75,28 +85,36 @@ namespace ReachComApp
                     _comReach.ErrorDescription = errorLookup.DescriptionError;
                 }
             }
+        }
 
+        private void ButoonSealAppConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            SealAppSelected();
+
+            MoveToNextTab();
+        }
+
+        private void MoveToNextTab()
+        {
             if (TabControlMain.SelectedIndex == TabControlMain.Items.Count - 1)
                 TabControlMain.SelectedIndex = 0;
             else
                 TabControlMain.SelectedIndex++;
         }
 
-        private void ButoonSealAppConfirm_Click(object sender, RoutedEventArgs e)
+        private void SealAppSelected()
         {
             foreach (var rowSelectedItem in sealAppDataGrid.SelectedItems)
             {
-                var sealApp = rowSelectedItem as SealApp;
+                SealApp sealApp = rowSelectedItem as SealApp;
 
-                _comReach.SealId = sealApp.SealId;
-                _comReach.AppTitle = sealApp.Title;
-                _comReach.AppDescription = sealApp.DescriptionApp;
+                if (sealApp != null)
+                {
+                    _comReach.SealId = sealApp.SealId;
+                    _comReach.AppTitle = sealApp.Title;
+                    _comReach.AppDescription = sealApp.DescriptionApp;
+                }
             }
-
-            if (TabControlMain.SelectedIndex == TabControlMain.Items.Count - 1)
-                TabControlMain.SelectedIndex = 0;
-            else
-                TabControlMain.SelectedIndex++;
         }
 
         private void ButtonIntro_Click(object sender, RoutedEventArgs e)
@@ -228,6 +246,17 @@ namespace ReachComApp
                 LabelFinancials.Visibility = Visibility.Visible;
                 TextBoxFinancials.Visibility = Visibility.Visible;
             }
+
+            if (CheckBoxReputational.IsChecked != null && !(bool)CheckBoxReputational.IsChecked)
+            {
+                LabelReputational.Visibility = Visibility.Hidden;
+                TextBoxReputational.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                LabelReputational.Visibility = Visibility.Visible;
+                TextBoxReputational.Visibility = Visibility.Visible;
+            }
         }
 
         private void PopulateReportData()
@@ -257,6 +286,15 @@ namespace ReachComApp
             else
                 _comReach.SlaInfo = string.Empty;
 
+            if (CheckBoxReputational.IsChecked != null && (bool) CheckBoxReputational.IsChecked)
+            {
+                _comReach.ReputationalImpact = TextBoxReputational.Text;
+            }
+            else
+            {
+                _comReach.ReputationalImpact = string.Empty;
+            }
+
             _comReach.StartTime = TextBoxStartTime.Text;
         }
 
@@ -265,6 +303,7 @@ namespace ReachComApp
         {
             //Clear Contents
             RichTextBoxReachPosting.Document.Blocks.Clear();
+
 
 
             //Build Time Entry
@@ -330,8 +369,19 @@ namespace ReachComApp
 
             }
 
+
+            //What is the Reputation Impacts in Dollars?
+            if (CheckBoxReputational.IsChecked != null && (bool)CheckBoxReputational.IsChecked)
+            {
+                textIssueParagraph.Inlines.Add(new Run("Reputation Impacts - "));
+                textIssueParagraph.Inlines.Add(new Run(_comReach.ReputationalImpact));
+                textIssueParagraph.Inlines.Add(new Run("\r"));
+
+            }
+
+
             //Have SLA's Been Impacted?
-            if (TextBoxSla.Text.Length > 0)
+            if (CheckBoxSla.IsChecked != null && (bool)CheckBoxSla.IsChecked)
             {
                 textIssueParagraph.Inlines.Add(new Run(("SLA Impacts - ")));
                 textIssueParagraph.Inlines.Add(new Run((_comReach.SlaInfo)));
@@ -362,7 +412,7 @@ namespace ReachComApp
             RichTextBoxReachPosting.ScrollToHome();
         }
 
-        private void resetinputs()
+        private void Resetinputs()
         {
             //Reset Checkboxes to unchecked
             CheckBoxTransactions.IsChecked = false;
@@ -395,6 +445,14 @@ namespace ReachComApp
 
         private void TabControlMain_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            TabItem tabItem = TabControlMain.SelectedItem as TabItem;
+
+            //If the Report Output tab is active then make sure the data is current
+            if (tabItem != null && tabItem.Name == "TabItemReachPosting")
+            {
+                PopulateReportData();
+                RechComReport();
+            }
         }
 
         private void TextBoxCustomerCall_TextChanged(object sender, TextChangedEventArgs e)
@@ -418,6 +476,16 @@ namespace ReachComApp
             // Load data by setting the CollectionViewSource.Source property:
             currentActionViewSource.Source = data.GetCurrentActions(stream);
 
+            Hideimpactquestions();
+        }
+
+        private void CheckBoxReputational_Checked(object sender, RoutedEventArgs e)
+        {
+            Hideimpactquestions();
+        }
+
+        private void CheckBoxReputational_Unchecked(object sender, RoutedEventArgs e)
+        {
             Hideimpactquestions();
         }
     }

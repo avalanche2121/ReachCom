@@ -21,6 +21,7 @@ namespace ReachComData
         public string FinancialAmount { get; set; }
         public  string SlaInfo { get; set; }
         public string StartTime { get; set; }
+        public string ReputationalImpact { get; set; }
 
     }
 }

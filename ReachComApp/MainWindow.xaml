@@ -435,14 +435,15 @@
                         <RowDefinition Height="40" />
                         <RowDefinition Height="40" />
                         <RowDefinition Height="40" />
+                        <RowDefinition Height="40" />
                         <RowDefinition Height="75" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                        <ColumnDefinition />
+                        <ColumnDefinition Width="160" />
+                        <ColumnDefinition Width="170" />
+                        <ColumnDefinition Width="160" />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
                         <Image VerticalAlignment="Top" Source="Incoming Call.ico" />
@@ -525,6 +526,23 @@
                         Grid.Row="6"
                         Grid.Column="0"
                         Orientation="Horizontal">
+                        <Image Source="Business delete-02-WF.ico" />
+                        <TextBlock
+                            Width="100"
+                            Height="30"
+                            Margin="10"
+                            VerticalAlignment="Top"
+                            FontSize="12"
+                            FontWeight="Medium"
+                            TextAlignment="Right">
+                            Reputational:
+                        </TextBlock>
+
+                    </StackPanel>
+                    <StackPanel
+                        Grid.Row="7"
+                        Grid.Column="0"
+                        Orientation="Horizontal">
                         <Image Source="Clock-01.ico" />
                         <TextBlock
                             Width="100"
@@ -539,7 +557,7 @@
                     </StackPanel>
                     <Button
                         x:Name="ButoonCurrentImpactsConfirm"
-                        Grid.Row="7"
+                        Grid.Row="8"
                         Grid.Column="3"
                         Width="130"
                         Height="36"
@@ -609,9 +627,21 @@
                         FontSize="12"
                         FontWeight="Medium"
                         Unchecked="CheckBoxSla_Unchecked_1" />
+                    <CheckBox
+                        Name="CheckBoxReputational"
+                        Grid.Row="6"
+                        Grid.Column="1"
+                        Margin="10"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Checked="CheckBoxReputational_Checked"
+                        Content="Impacts ?"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        Unchecked="CheckBoxReputational_Unchecked" />
                     <TextBox
                         Name="TextBoxStartTime"
-                        Grid.Row="6"
+                        Grid.Row="7"
                         Grid.RowSpan="2"
                         Grid.Column="1"
                         Width="130"
@@ -619,7 +649,7 @@
                         Margin="10"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
-                        Text="HH:MM A/PM"
+                        Text="00:00 AM/PM ET"
                         TextWrapping="Wrap" />
                     <Label
                         Name="LabelCustomerCall"
@@ -681,6 +711,18 @@
                         Content="SLA Details?"
                         FontSize="12"
                         FontWeight="Bold" />
+                    <Label
+                        Name="LabelReputational"
+                        Grid.Row="6"
+                        Grid.Column="2"
+                        Height="32"
+                        Margin="10"
+                        Padding="0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Content="Reputational Details?"
+                        FontSize="12"
+                        FontWeight="Bold" />
                     <TextBox
                         Name="TextBoxCustomerCall"
                         Grid.Row="1"
@@ -730,8 +772,19 @@
                         Name="TextBoxSla"
                         Grid.Row="5"
                         Grid.Column="3"
-                        Width="120"
                         Height="23"
+                        MinWidth="120"
+                        Margin="10"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Text=""
+                        TextWrapping="Wrap" />
+                    <TextBox
+                        Name="TextBoxReputational"
+                        Grid.Row="6"
+                        Grid.Column="3"
+                        Height="23"
+                        MinWidth="120"
                         Margin="10"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Top"
