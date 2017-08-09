@@ -263,5 +263,14 @@
   <ItemGroup>
     <Resource Include="Business delete-02-WF.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Project-Reach.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Clipboard-Next-Down.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Anonymous-WF.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

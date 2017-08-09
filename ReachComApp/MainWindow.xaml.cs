@@ -1,9 +1,12 @@
-﻿using ReachComData;
+﻿using System;
+using ReachComData;
 using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Input;
 
 namespace ReachComApp
 {
@@ -68,10 +71,7 @@ namespace ReachComApp
         {
             ErrorLookupSelected();
 
-            if (TabControlMain.SelectedIndex == TabControlMain.Items.Count - 1)
-                TabControlMain.SelectedIndex = 0;
-            else
-                TabControlMain.SelectedIndex++;
+            MoveToNextTab(); ;
         }
 
         private void ErrorLookupSelected()
@@ -257,10 +257,23 @@ namespace ReachComApp
                 LabelReputational.Visibility = Visibility.Visible;
                 TextBoxReputational.Visibility = Visibility.Visible;
             }
+
+            if (CheckBoxOtherIssue.IsChecked != null && !(bool) CheckBoxOtherIssue.IsChecked)
+            {
+                LabelOtherIssue.Visibility = Visibility.Hidden;
+                TextBoxOtherIssue.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                LabelOtherIssue.Visibility = Visibility.Visible;
+                TextBoxOtherIssue.Visibility = Visibility.Visible;
+            }
+
         }
 
         private void PopulateReportData()
         {
+
             if (CheckBoxCustomerCalls.IsChecked != null && (bool)CheckBoxCustomerCalls.IsChecked)
                 _comReach.CustomerCall = TextBoxCustomerCall.Text;
             else
@@ -286,6 +299,12 @@ namespace ReachComApp
             else
                 _comReach.SlaInfo = string.Empty;
 
+            if (CheckBoxOtherIssue.IsChecked != null && (bool) CheckBoxOtherIssue.IsChecked)
+                _comReach.OtherIssue = TextBoxOtherIssue.Text;
+            else
+                _comReach.OtherIssue = string.Empty; 
+        
+
             if (CheckBoxReputational.IsChecked != null && (bool) CheckBoxReputational.IsChecked)
             {
                 _comReach.ReputationalImpact = TextBoxReputational.Text;
@@ -295,7 +314,16 @@ namespace ReachComApp
                 _comReach.ReputationalImpact = string.Empty;
             }
 
-            _comReach.StartTime = TextBoxStartTime.Text;
+
+            try
+            {
+                _comReach.StartTime = TextBoxStartTime.Text;
+            }
+            catch (Exception e)
+            {
+                //Console.WriteLine(e);
+                //throw;
+            }
         }
 
 
@@ -332,6 +360,7 @@ namespace ReachComApp
 
             //Issue Details
             Paragraph textIssueParagraph = new Paragraph();
+
 
             //How many Calls?
             if (CheckBoxCustomerCalls.IsChecked != null && (bool)CheckBoxCustomerCalls.IsChecked)
@@ -389,6 +418,24 @@ namespace ReachComApp
 
             }
 
+            if (CheckBoxOtherIssue.IsChecked != null && (bool) CheckBoxOtherIssue.IsChecked)
+            {
+                if (textIssueParagraph.Inlines.Count > 0)
+                {
+                    textIssueParagraph.Inlines.Add(new Run(("Other Impacts - ")));
+                }
+                else
+                {
+                    textIssueParagraph.Inlines.Add(new Run(("Impacts - ")));
+                }
+
+                textIssueParagraph.Inlines.Add(new Run((_comReach.OtherIssue)));
+                textIssueParagraph.Inlines.Add(new Run("\r"));
+
+            }
+
+
+
             //Remediation
             Paragraph textRemediationParagraph = new Paragraph();
             textRemediationParagraph.Inlines.Add(new Run("Current Remediation - "));
@@ -435,7 +482,7 @@ namespace ReachComApp
             currentActionDataGrid.SelectedIndex = 0;
 
             RichTextBoxReachPosting.Document.Blocks.Clear();
-
+            
         }
 
         private void RichTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -487,6 +534,52 @@ namespace ReachComApp
         private void CheckBoxReputational_Unchecked(object sender, RoutedEventArgs e)
         {
             Hideimpactquestions();
+        }
+
+        private void sealAppDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ButtonReachComLaunch_Click(object sender, RoutedEventArgs e)
+        {
+            OpenUri(Properties.Settings.Default.REACHCOM.ToString());
+        }
+
+
+        public static bool IsValidUri(string uri)
+        {
+            if (!Uri.IsWellFormedUriString(uri, UriKind.Absolute))
+                return false;
+            Uri tmp;
+            if (!Uri.TryCreate(uri, UriKind.Absolute, out tmp))
+                return false;
+            return tmp.Scheme == Uri.UriSchemeHttp || tmp.Scheme == Uri.UriSchemeHttps;
+        }
+
+        public static bool OpenUri(string uri)
+        {
+            if (!IsValidUri(uri))
+                return false;
+            System.Diagnostics.Process.Start(uri);
+            return true;
+        }
+
+        private void CheckBoxOtherIssue_Checked(object sender, RoutedEventArgs e)
+        {
+            Hideimpactquestions();
+        }
+
+        private void CheckBoxOtherIssue_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Hideimpactquestions();
+        }
+
+        private void ButtonCopyToClipBoard_Click(object sender, RoutedEventArgs e)
+        {
+            RichTextBoxReachPosting.SelectAll();
+            RichTextBoxReachPosting.Copy();
+
         }
     }
 }

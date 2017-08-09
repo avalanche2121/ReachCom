@@ -81,7 +81,7 @@
                                 FontSize="18"
                                 FontWeight="Bold"
                                 TextAlignment="Center">
-                                <Run Text="Introduction to Reach Com Generator" />
+                                <Run Text="Introduction to REACH Com Generator" />
                             </Paragraph>
                             <Paragraph FontSize="14" FontWeight="Bold">
                                 <Run Text="The application is designed to help generate the information required in Reach Com's. It will improve accuracy and reduce the time required." />
@@ -139,7 +139,7 @@
                     Background="#FFE5E5E5"
                     DataContext="{StaticResource sealAppViewSource}">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="25" />
+                        <RowDefinition Height="35" />
                         <RowDefinition Height="2*" />
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="1*" />
@@ -185,7 +185,7 @@
                                 x:Name="titleColumn"
                                 Width="*"
                                 Binding="{Binding Title}"
-                                Header="Title" />
+                                Header="Application Name" />
                             <DataGridTextColumn
                                 x:Name="descriptionAppColumn"
                                 Width="0"
@@ -194,6 +194,7 @@
                                 Visibility="Collapsed" />
 
                         </DataGrid.Columns>
+
                     </DataGrid>
                     <Label
                         Grid.Row="2"
@@ -203,7 +204,10 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Top"
                         HorizontalContentAlignment="Right"
-                        Content="Description App:" />
+                        Content="Description of App:"
+                        FontSize="14"
+                        FontStyle="Normal"
+                        FontWeight="Bold" />
                     <TextBox
                         x:Name="descriptionAppTextBox"
                         Grid.Row="2"
@@ -238,7 +242,7 @@
                             Width="96"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Center"
-                            Text="Error                 " />
+                            Text="Issue" />
                     </StackPanel>
                 </TabItem.Header>
                 <Grid Background="#FFE5E5E5" DataContext="{StaticResource errorLookupViewSource}">
@@ -283,7 +287,8 @@
                                 x:Name="titleColumn1"
                                 Width="*"
                                 Binding="{Binding Title}"
-                                Header="Title" />
+                                FontWeight="Normal"
+                                Header="Issue" />
                             <DataGridTextColumn
                                 x:Name="DescriptionErrorColumn"
                                 Width="0"
@@ -291,6 +296,7 @@
                                 Header="Description"
                                 Visibility="Collapsed" />
                         </DataGrid.Columns>
+
                     </DataGrid>
                     <Label
                         Grid.Row="2"
@@ -298,7 +304,9 @@
                         Margin="3"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Top"
-                        Content="Description Error:" />
+                        Content="Description of Issue:"
+                        FontSize="14"
+                        FontWeight="Bold" />
                     <TextBox
                         x:Name="descriptionErrorTextBox"
                         Grid.Row="2"
@@ -377,7 +385,7 @@
                                 x:Name="actionColumn"
                                 Width="*"
                                 Binding="{Binding Action}"
-                                Header="Action" />
+                                Header="Current Action" />
                             <DataGridTextColumn
                                 x:Name="DescriptionActionColumn"
                                 Width="0"
@@ -385,6 +393,7 @@
                                 Header="Description"
                                 Visibility="Collapsed" />
                         </DataGrid.Columns>
+
                     </DataGrid>
                     <Label
                         Grid.Row="2"
@@ -392,7 +401,9 @@
                         Margin="3"
                         HorizontalAlignment="Right"
                         VerticalAlignment="Top"
-                        Content="Description Action:" />
+                        Content="Description of Action:"
+                        FontSize="14"
+                        FontWeight="Bold" />
                     <TextBox
                         x:Name="descriptionActionTextBox"
                         Grid.Row="2"
@@ -407,7 +418,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem x:Name="TabItemImpacts" TabIndex="4">
+            <TabItem x:Name="TabItemImpacts" TabIndex="4" Height="40" VerticalAlignment="Top">
                 <TabItem.Header>
                     <StackPanel
                         HorizontalAlignment="Left"
@@ -436,7 +447,7 @@
                         <RowDefinition Height="40" />
                         <RowDefinition Height="40" />
                         <RowDefinition Height="40" />
-                        <RowDefinition Height="75" />
+                        <RowDefinition Height="40" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -543,6 +554,22 @@
                         Grid.Row="7"
                         Grid.Column="0"
                         Orientation="Horizontal">
+                        <Image Source="Anonymous-WF.ico" />
+                        <TextBlock
+                            Width="100"
+                            Height="30"
+                            Margin="10"
+                            VerticalAlignment="Top"
+                            FontSize="12"
+                            FontWeight="Medium"
+                            TextAlignment="Right">
+                            Other:
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel
+                        Grid.Row="8"
+                        Grid.Column="0"
+                        Orientation="Horizontal">
                         <Image Source="Clock-01.ico" />
                         <TextBlock
                             Width="100"
@@ -557,7 +584,7 @@
                     </StackPanel>
                     <Button
                         x:Name="ButoonCurrentImpactsConfirm"
-                        Grid.Row="8"
+                        Grid.Row="9"
                         Grid.Column="3"
                         Width="130"
                         Height="36"
@@ -639,9 +666,21 @@
                         FontSize="12"
                         FontWeight="Medium"
                         Unchecked="CheckBoxReputational_Unchecked" />
+                    <CheckBox
+                        Name="CheckBoxOtherIssue"
+                        Grid.Row="7"
+                        Grid.Column="1"
+                        Margin="10"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Checked="CheckBoxOtherIssue_Checked"
+                        Content="Other Issue ?"
+                        FontSize="12"
+                        FontWeight="Medium"
+                        Unchecked="CheckBoxOtherIssue_Unchecked" />
                     <TextBox
                         Name="TextBoxStartTime"
-                        Grid.Row="7"
+                        Grid.Row="8"
                         Grid.RowSpan="2"
                         Grid.Column="1"
                         Width="130"
@@ -723,6 +762,18 @@
                         Content="Reputational Details?"
                         FontSize="12"
                         FontWeight="Bold" />
+                    <Label
+                        Name="LabelOtherIssue"
+                        Grid.Row="7"
+                        Grid.Column="2"
+                        Height="32"
+                        Margin="10"
+                        Padding="0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Content="Please Enter Details?"
+                        FontSize="12"
+                        FontWeight="Bold" />
                     <TextBox
                         Name="TextBoxCustomerCall"
                         Grid.Row="1"
@@ -775,7 +826,7 @@
                         Height="23"
                         MinWidth="120"
                         Margin="10"
-                        HorizontalAlignment="Left"
+                        HorizontalAlignment="Stretch"
                         VerticalAlignment="Top"
                         Text=""
                         TextWrapping="Wrap" />
@@ -786,13 +837,31 @@
                         Height="23"
                         MinWidth="120"
                         Margin="10"
-                        HorizontalAlignment="Left"
+                        HorizontalAlignment="Stretch"
                         VerticalAlignment="Top"
                         Text=""
                         TextWrapping="Wrap" />
+                    <TextBox
+                        Name="TextBoxOtherIssue"
+                        Grid.Row="7"
+                        Grid.Column="3"
+                        Height="23"
+                        MinWidth="120"
+                        Margin="10,10,0,0"
+                        Padding="1"
+                        HorizontalAlignment="{Binding Path=ActualWidth, RelativeSource={RelativeSource Self}}"
+                        VerticalAlignment="Top"
+                        HorizontalScrollBarVisibility="Auto"
+                        Text=""
+                        TextWrapping="Wrap"
+                        VerticalScrollBarVisibility="Auto" />
                 </Grid>
             </TabItem>
-            <TabItem x:Name="TabItemReachPosting" TabIndex="5">
+            <TabItem
+                x:Name="TabItemReachPosting"
+                Height="40"
+                VerticalAlignment="Bottom"
+                TabIndex="5">
                 <TabItem.Header>
                     <StackPanel
                         HorizontalAlignment="Left"
@@ -812,14 +881,20 @@
                 </TabItem.Header>
                 <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50" />
+                        <RowDefinition Height="30" />
                         <RowDefinition Height="3*" />
                         <RowDefinition Height="70" />
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
                     <RichTextBox
                         Name="RichTextBoxReachPosting"
                         Grid.Row="1"
+                        Grid.ColumnSpan="3"
                         MinWidth="575"
                         MinHeight="250"
                         Margin="5"
@@ -841,6 +916,44 @@
                             <TextBlock Margin="5" TextAlignment="Right"><Run Text="Reset" /></TextBlock>
                         </StackPanel>
                     </Button>
+                    <Button
+                        x:Name="ButtonReachComLaunch"
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Width="120"
+                        Height="32"
+                        Click="ButtonReachComLaunch_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Project-Reach.ico" />
+                            <TextBlock Margin="5" TextAlignment="Right">
+                                <Run Text="REACH Com" />
+                            </TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button
+                        x:Name="ButtonCopyToClipBoard"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Width="120"
+                        Height="32" Click="ButtonCopyToClipBoard_Click">
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Clipboard-Next-Down.ico" />
+                            <TextBlock Margin="5" TextAlignment="Right">
+                                <Run Text="Copy All" />
+                            </TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Grid
+                        Name="GridLower"
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Width="100"
+                        Height="100"
+                        Margin="0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top" />
+
                 </Grid>
             </TabItem>
             <TabItem x:Name="TabItemHelp" TabIndex="6">
