@@ -156,7 +156,7 @@
                         Grid.Column="3"
                         Width="125"
                         Height="36"
-                        Click="ButoonSealAppConfirm_Click">
+                        Click="ButtonSealAppConfirm_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="Check-03.ico" />
                             <TextBlock Margin="5" TextAlignment="Right"><Run Text="Confirm App" /></TextBlock>
@@ -264,7 +264,7 @@
                         Grid.Column="3"
                         Width="125"
                         Height="36"
-                        Click="ButoonErrorConfirm_Click">
+                        Click="ButtonErrorConfirm_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="Check-03.ico" />
                             <TextBlock Margin="5" TextAlignment="Right"><Run Text="Confirm Error" /></TextBlock>
@@ -363,7 +363,7 @@
                         Grid.Column="3"
                         Width="125"
                         Height="36"
-                        Click="ButoonCurrentActionConfirm_Click">
+                        Click="ButtonCurrentActionConfirm_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="Check-03.ico" />
                             <TextBlock Margin="5" TextAlignment="Right"><Run Text="Confirm Action" /></TextBlock>
@@ -418,7 +418,11 @@
 
                 </Grid>
             </TabItem>
-            <TabItem x:Name="TabItemImpacts" TabIndex="4" Height="40" VerticalAlignment="Top">
+            <TabItem
+                x:Name="TabItemImpacts"
+                Height="40"
+                VerticalAlignment="Top"
+                TabIndex="4">
                 <TabItem.Header>
                     <StackPanel
                         HorizontalAlignment="Left"
@@ -588,7 +592,7 @@
                         Grid.Column="3"
                         Width="130"
                         Height="36"
-                        Click="ButoonCurrentImpactsConfirm_Click">
+                        Click="ButtonCurrentImpactsConfirm_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="Check-03.ico" />
                             <TextBlock Margin="5" TextAlignment="Right"><Run Text="Confirm Impacts" /></TextBlock>
@@ -653,7 +657,7 @@
                         Content="Impacted or Missed ?"
                         FontSize="12"
                         FontWeight="Medium"
-                        Unchecked="CheckBoxSla_Unchecked_1" />
+                        Unchecked="CheckBoxSla_Unchecked" />
                     <CheckBox
                         Name="CheckBoxReputational"
                         Grid.Row="6"
@@ -910,7 +914,7 @@
                         Grid.Column="0"
                         Width="120"
                         Height="32"
-                        Click="ButonReset_Click">
+                        Click="ButtonReset_Click">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="Check-03.ico" />
                             <TextBlock Margin="5" TextAlignment="Right"><Run Text="Reset" /></TextBlock>
@@ -935,7 +939,8 @@
                         Grid.Row="2"
                         Grid.Column="1"
                         Width="120"
-                        Height="32" Click="ButtonCopyToClipBoard_Click">
+                        Height="32"
+                        Click="ButtonCopyToClipBoard_Click">
 
                         <StackPanel Orientation="Horizontal">
                             <Image Source="Clipboard-Next-Down.ico" />

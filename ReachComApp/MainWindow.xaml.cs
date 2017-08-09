@@ -1,19 +1,17 @@
 ﻿using System;
 using ReachComData;
 using System.IO;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
 
 namespace ReachComApp
 {
     /// <summary>
     ///     Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         private ComReach _comReach;
 
@@ -24,15 +22,15 @@ namespace ReachComApp
             _comReach = new ComReach();
         }
 
-        private void ButonReset_Click(object sender, RoutedEventArgs e)
+        private void ButtonReset_Click(object sender, RoutedEventArgs e)
         {
             //Clear Contents
-            Resetinputs();
+            ResetInputs();
 
             TabControlMain.SelectedIndex = 1;
         }
 
-        private void ButoonCurrentActionConfirm_Click(object sender, RoutedEventArgs e)
+        private void ButtonCurrentActionConfirm_Click(object sender, RoutedEventArgs e)
         {
             CurrentActionSelected();
 
@@ -56,22 +54,22 @@ namespace ReachComApp
             }
         }
 
-        private void ButoonCurrentImpactsConfirm_Click(object sender, RoutedEventArgs e)
+        private void ButtonCurrentImpactsConfirm_Click(object sender, RoutedEventArgs e)
         {
             PopulateReportData();
 
             //Build Reach Output
-            RechComReport();
+            ReachComReport();
 
             //Move to the Next Tab
             MoveToNextTab();
         }
 
-        private void ButoonErrorConfirm_Click(object sender, RoutedEventArgs e)
+        private void ButtonErrorConfirm_Click(object sender, RoutedEventArgs e)
         {
             ErrorLookupSelected();
 
-            MoveToNextTab(); ;
+            MoveToNextTab();
         }
 
         private void ErrorLookupSelected()
@@ -87,7 +85,7 @@ namespace ReachComApp
             }
         }
 
-        private void ButoonSealAppConfirm_Click(object sender, RoutedEventArgs e)
+        private void ButtonSealAppConfirm_Click(object sender, RoutedEventArgs e)
         {
             SealAppSelected();
 
@@ -127,68 +125,61 @@ namespace ReachComApp
 
         private void CheckBoxCustomerCalls_Checked(object sender, RoutedEventArgs e)
         {
-            Hideimpactquestions();
+            ShowHideImpactQuestions();
         }
 
         private void CheckBoxCustomerCalls_Unchecked(object sender, RoutedEventArgs e)
         {
-            Hideimpactquestions();
+            ShowHideImpactQuestions();
         }
 
         private void CheckBoxFinancial_Checked(object sender, RoutedEventArgs e)
         {
-            Hideimpactquestions();
+            ShowHideImpactQuestions();
         }
 
         private void CheckBoxFinancial_Unchecked(object sender, RoutedEventArgs e)
         {
-            Hideimpactquestions();
+            ShowHideImpactQuestions();
         }
 
         private void CheckBoxReports_Checked(object sender, RoutedEventArgs e)
         {
-            Hideimpactquestions();
+            ShowHideImpactQuestions();
         }
 
         private void CheckBoxReports_Unchecked(object sender, RoutedEventArgs e)
         {
-            Hideimpactquestions();
+            ShowHideImpactQuestions();
         }
 
         private void CheckBoxSla_Checked(object sender, RoutedEventArgs e)
         {
-            Hideimpactquestions();
+            ShowHideImpactQuestions();
         }
+
+
 
         private void CheckBoxSla_Unchecked(object sender, RoutedEventArgs e)
         {
-            Hideimpactquestions();
-        }
-
-        private void CheckBoxSla_Unchecked_1(object sender, RoutedEventArgs e)
-        {
-            Hideimpactquestions();
+            ShowHideImpactQuestions();
         }
 
         private void CheckBoxTransactions_Checked(object sender, RoutedEventArgs e)
         {
-            Hideimpactquestions();
+            ShowHideImpactQuestions();
         }
 
         private void CheckBoxTransactions_Unchecked(object sender, RoutedEventArgs e)
         {
-            Hideimpactquestions();
+            ShowHideImpactQuestions();
         }
 
         private void errorLookupDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
         }
 
-        private void GenerateReachComs()
-        {
-        }
-
-        private void Hideimpactquestions()
+        private void ShowHideImpactQuestions()
         {
             if (CheckBoxCustomerCalls.IsChecked != null && !(bool)CheckBoxCustomerCalls.IsChecked)
             {
@@ -315,19 +306,12 @@ namespace ReachComApp
             }
 
 
-            try
-            {
                 _comReach.StartTime = TextBoxStartTime.Text;
-            }
-            catch (Exception e)
-            {
-                //Console.WriteLine(e);
-                //throw;
-            }
+
         }
 
 
-        private void RechComReport()
+        private void ReachComReport()
         {
             //Clear Contents
             RichTextBoxReachPosting.Document.Blocks.Clear();
@@ -459,7 +443,7 @@ namespace ReachComApp
             RichTextBoxReachPosting.ScrollToHome();
         }
 
-        private void Resetinputs()
+        private void ResetInputs()
         {
             //Reset Checkboxes to unchecked
             CheckBoxTransactions.IsChecked = false;
@@ -498,7 +482,7 @@ namespace ReachComApp
             if (tabItem != null && tabItem.Name == "TabItemReachPosting")
             {
                 PopulateReportData();
-                RechComReport();
+                ReachComReport();
             }
         }
 
@@ -523,27 +507,23 @@ namespace ReachComApp
             // Load data by setting the CollectionViewSource.Source property:
             currentActionViewSource.Source = data.GetCurrentActions(stream);
 
-            Hideimpactquestions();
+            ShowHideImpactQuestions();
         }
 
         private void CheckBoxReputational_Checked(object sender, RoutedEventArgs e)
         {
-            Hideimpactquestions();
+            ShowHideImpactQuestions();
         }
 
         private void CheckBoxReputational_Unchecked(object sender, RoutedEventArgs e)
         {
-            Hideimpactquestions();
+            ShowHideImpactQuestions();
         }
 
-        private void sealAppDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
 
         private void ButtonReachComLaunch_Click(object sender, RoutedEventArgs e)
         {
-            OpenUri(Properties.Settings.Default.REACHCOM.ToString());
+            OpenUri(Properties.Settings.Default.REACHCOM);
         }
 
 
@@ -567,12 +547,12 @@ namespace ReachComApp
 
         private void CheckBoxOtherIssue_Checked(object sender, RoutedEventArgs e)
         {
-            Hideimpactquestions();
+            ShowHideImpactQuestions();
         }
 
         private void CheckBoxOtherIssue_Unchecked(object sender, RoutedEventArgs e)
         {
-            Hideimpactquestions();
+            ShowHideImpactQuestions();
         }
 
         private void ButtonCopyToClipBoard_Click(object sender, RoutedEventArgs e)
