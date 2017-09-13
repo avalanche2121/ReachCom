@@ -961,6 +961,99 @@
 
                 </Grid>
             </TabItem>
+            <TabItem x:Name="GIMEngagement" TabIndex="6">
+                <TabItem.Header>
+                    <StackPanel
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+                        <TextBlock
+                            x:Name="GIMEngagementTextBlock"
+                            Width="96"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Text="GIM Engagement" />
+                    </StackPanel>
+                </TabItem.Header>
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="70" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <RichTextBox
+                        Name="RichTextBoxGIMEngagement"
+                        Grid.Row="1"
+                        Grid.ColumnSpan="3"
+                        MinWidth="575"
+                        MinHeight="250"
+                        Margin="5"
+                        HorizontalScrollBarVisibility="Auto"
+                        IsReadOnly="False"
+                        SpellCheck.IsEnabled="True"
+                        VerticalScrollBarVisibility="Auto">
+                        <FlowDocument />
+                    </RichTextBox>
+                    <Button
+                        x:Name="ButonReset2"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Width="120"
+                        Height="32"
+                        Click="ButtonReset_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Check-03.ico" />
+                            <TextBlock Margin="5" TextAlignment="Right"><Run Text="Reset" /></TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button
+                        x:Name="ButtonReachComLaunch2"
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Width="120"
+                        Height="32"
+                        Click="ButtonReachComLaunch_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Project-Reach.ico" />
+                            <TextBlock Margin="5" TextAlignment="Right">
+                                <Run Text="Launch Skype" />
+                            </TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button
+                        x:Name="ButtonCopyToClipBoard2"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Width="120"
+                        Height="32"
+                        Click="ButtonCopyToClipBoard_Click">
+
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Clipboard-Next-Down.ico" />
+                            <TextBlock Margin="5" TextAlignment="Right">
+                                <Run Text="Copy All" />
+                            </TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Grid
+                        Name="GridLower2"
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Width="100"
+                        Height="100"
+                        Margin="0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top" />
+
+                </Grid>
+            </TabItem>
+
             <TabItem x:Name="TabItemHelp" TabIndex="6">
                 <TabItem.Header>
                     <StackPanel
