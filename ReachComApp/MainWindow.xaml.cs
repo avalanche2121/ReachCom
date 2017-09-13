@@ -60,6 +60,7 @@ namespace ReachComApp
 
             //Build Reach Output
             ReachComReport();
+            GIMEngagementReport();
 
             //Move to the Next Tab
             MoveToNextTab();
@@ -310,6 +311,19 @@ namespace ReachComApp
 
         }
 
+        private void GIMEngagementReport()
+        {
+
+            //Clear Contents
+            RichTextBoxGIMEngagement.Document.Blocks.Clear();
+
+            //Build Time Entry
+            Paragraph textStartTime = new Paragraph();
+            textStartTime.Inlines.Add(new Run("Issue Start Time is "));
+            textStartTime.Inlines.Add(new Run(_comReach.StartTime));
+
+            RichTextBoxGIMEngagement.Document.Blocks.Add(textStartTime);
+        }
 
         private void ReachComReport()
         {
@@ -443,6 +457,8 @@ namespace ReachComApp
             RichTextBoxReachPosting.ScrollToHome();
         }
 
+
+
         private void ResetInputs()
         {
             //Reset Checkboxes to unchecked
@@ -466,6 +482,7 @@ namespace ReachComApp
             currentActionDataGrid.SelectedIndex = 0;
 
             RichTextBoxReachPosting.Document.Blocks.Clear();
+            RichTextBoxGIMEngagement.Document.Blocks.Clear();   
             
         }
 
@@ -483,6 +500,7 @@ namespace ReachComApp
             {
                 PopulateReportData();
                 ReachComReport();
+                GIMEngagementReport();
             }
         }
 
