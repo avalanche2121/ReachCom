@@ -40,6 +40,7 @@ namespace ReachComApp
             MoveToNextTab();
         }
 
+
         private void CurrentActionSelected()
         {
             foreach (var rowSelectedItem in currentActionDataGrid.SelectedItems)
@@ -308,6 +309,10 @@ namespace ReachComApp
 
 
                 _comReach.StartTime = TextBoxStartTime.Text;
+                //_comReach.P1Ticket = TextBoxP1Ticket.Text;
+                _comReach.BridgeNumber = TextBoxBridgeNumber.Text;
+                _comReach.ChatRoom = TextBoxChatRoom.Text;
+
 
         }
 
@@ -317,12 +322,125 @@ namespace ReachComApp
             //Clear Contents
             RichTextBoxGIMEngagement.Document.Blocks.Clear();
 
-            //Build Time Entry
-            Paragraph textStartTime = new Paragraph();
-            textStartTime.Inlines.Add(new Run("Issue Start Time is "));
-            textStartTime.Inlines.Add(new Run(_comReach.StartTime));
+            //Build GIM Related Questions
+            Paragraph p1Ticket = new Paragraph();
+            p1Ticket.Inlines.Add(new Bold(new Run("P1 Ticket #:")));
 
-            RichTextBoxGIMEngagement.Document.Blocks.Add(textStartTime);
+            Paragraph firstQuestion = new Paragraph();
+            firstQuestion.Inlines.Add(new Bold(new Run("What is the issue? \r")));
+            firstQuestion.Inlines.Add(new Run(_comReach.ErrorDescription));
+
+            Paragraph secondQuestion = new Paragraph();
+            secondQuestion.Inlines.Add(new Bold(new Run("What is the P1 impact?")));
+
+            //How many Calls?
+            Paragraph textIssueParagraph = new Paragraph();
+            if (CheckBoxCustomerCalls.IsChecked != null && (bool)CheckBoxCustomerCalls.IsChecked)
+            {
+                textIssueParagraph.Inlines.Add(new Run("Calls Received - "));
+                textIssueParagraph.Inlines.Add(new Run(_comReach.CustomerCall));
+                textIssueParagraph.Inlines.Add(new Run("\r"));
+            }
+
+
+            //How many Transactions impacted?
+            if (CheckBoxTransactions.IsChecked != null && (bool)CheckBoxTransactions.IsChecked)
+            {
+                textIssueParagraph.Inlines.Add(new Run("Transactions Affected - "));
+                textIssueParagraph.Inlines.Add(new Run(_comReach.TransactionCount));
+                textIssueParagraph.Inlines.Add(new Run("\r"));
+
+            }
+
+            //How many Reports impacted?
+            if (CheckBoxReports.IsChecked != null && (bool)CheckBoxReports.IsChecked)
+            {
+                textIssueParagraph.Inlines.Add(new Run(("Transactions Affected - ")));
+                textIssueParagraph.Inlines.Add(new Run((_comReach.ReportCount)));
+                textIssueParagraph.Inlines.Add(new Run("\r"));
+
+            }
+
+            //What is the Financial Impacts in Dollars?
+            if (CheckBoxFinancial.IsChecked != null && (bool)CheckBoxFinancial.IsChecked)
+            {
+                textIssueParagraph.Inlines.Add(new Run("Financial Impacts - "));
+                textIssueParagraph.Inlines.Add(new Run(_comReach.FinancialAmount));
+                textIssueParagraph.Inlines.Add(new Run("\r"));
+
+            }
+
+
+            //What is the Reputation Impacts in Dollars?
+            if (CheckBoxReputational.IsChecked != null && (bool)CheckBoxReputational.IsChecked)
+            {
+                textIssueParagraph.Inlines.Add(new Run("Reputation Impacts - "));
+                textIssueParagraph.Inlines.Add(new Run(_comReach.ReputationalImpact));
+                textIssueParagraph.Inlines.Add(new Run("\r"));
+
+            }
+
+
+            //Have SLA's Been Impacted?
+            if (CheckBoxSla.IsChecked != null && (bool)CheckBoxSla.IsChecked)
+            {
+                textIssueParagraph.Inlines.Add(new Run(("SLA Impacts - ")));
+                textIssueParagraph.Inlines.Add(new Run((_comReach.SlaInfo)));
+                textIssueParagraph.Inlines.Add(new Run("\r"));
+
+            }
+
+            if (CheckBoxOtherIssue.IsChecked != null && (bool)CheckBoxOtherIssue.IsChecked)
+            {
+                if (textIssueParagraph.Inlines.Count > 0)
+                {
+                    textIssueParagraph.Inlines.Add(new Run(("Other Impacts - ")));
+                }
+                else
+                {
+                    textIssueParagraph.Inlines.Add(new Run(("Impacts - ")));
+                }
+
+                textIssueParagraph.Inlines.Add(new Run((_comReach.OtherIssue)));
+                textIssueParagraph.Inlines.Add(new Run("\r"));
+
+            }
+
+
+            Paragraph thirdQuestion = new Paragraph();
+            thirdQuestion.Inlines.Add(new Bold(new Run("What is the Application Name & Seal ID of the application that is impacted? \r")));
+            thirdQuestion.Inlines.Add(new Run("Application: "));
+            thirdQuestion.Inlines.Add(new Run(_comReach.AppTitle));
+            thirdQuestion.Inlines.Add(new Run("\r Seal ID: "));
+            thirdQuestion.Inlines.Add(new Run(_comReach.SealId.ToString()));
+
+
+
+            Paragraph fourthQuestion = new Paragraph();
+            fourthQuestion.Inlines.Add(new Bold(new Run("Are there any bridge or Skype Chats opened?")));
+
+            Paragraph textBridgeNumber = new Paragraph();
+            textBridgeNumber.Inlines.Add(new Run("Bridge: "));
+            textBridgeNumber.Inlines.Add(new Run(_comReach.text.BridgeNumber));
+
+            Paragraph textChatRoom = new Paragraph();
+            textChatRoom.Inlines.Add(new Run("Chat URL: "));
+            textChatRoom.Inlines.Add(new Run(_comReach.ChatRoom));
+
+
+            Paragraph fifthQuestion = new Paragraph();
+            fifthQuestion.Inlines.Add(new Bold(new Run("What resources are needed?")));
+
+            RichTextBoxGIMEngagement.Document.Blocks.Add(p1Ticket);
+            RichTextBoxGIMEngagement.Document.Blocks.Add(firstQuestion);
+            RichTextBoxGIMEngagement.Document.Blocks.Add(secondQuestion);
+            RichTextBoxGIMEngagement.Document.Blocks.Add(textIssueParagraph);
+            RichTextBoxGIMEngagement.Document.Blocks.Add(thirdQuestion);
+            RichTextBoxGIMEngagement.Document.Blocks.Add(fourthQuestion);
+            RichTextBoxGIMEngagement.Document.Blocks.Add(textBridgeNumber);
+            RichTextBoxGIMEngagement.Document.Blocks.Add(textChatRoom);
+            RichTextBoxGIMEngagement.Document.Blocks.Add(fifthQuestion);
+
         }
 
         private void ReachComReport()
@@ -413,7 +531,7 @@ namespace ReachComApp
                 textIssueParagraph.Inlines.Add(new Run(("SLA Impacts - ")));
                 textIssueParagraph.Inlines.Add(new Run((_comReach.SlaInfo)));
                 textIssueParagraph.Inlines.Add(new Run("\r"));
-
+            
             }
 
             if (CheckBoxOtherIssue.IsChecked != null && (bool) CheckBoxOtherIssue.IsChecked)
@@ -474,6 +592,10 @@ namespace ReachComApp
             TextBoxFinancials.Text = "$0.00";
             TextBoxReports.Text = "0";
             TextBoxSla.Text = "0";
+
+            TextBoxP1Ticket.Text = "";
+            TextBoxBridgeNumber.Text = "";
+            TextBoxChatRoom.Text = "";
 
             TextBoxStartTime.Text = "00:00 AM/PM ET";
 

@@ -379,7 +379,7 @@
                         IsReadOnly="True"
                         ItemsSource="{Binding}"
                         RowDetailsVisibilityMode="VisibleWhenSelected"
-                        SelectionMode="Single">
+                        SelectionMode="Single" Margin="0,20.2,-0.4,-54">
                         <DataGrid.Columns>
                             <DataGridTextColumn
                                 x:Name="actionColumn"
@@ -398,12 +398,11 @@
                     <Label
                         Grid.Row="2"
                         Grid.Column="0"
-                        Margin="3"
+                        Margin="0,59,0.2,55.2"
                         HorizontalAlignment="Right"
-                        VerticalAlignment="Top"
                         Content="Description of Action:"
                         FontSize="14"
-                        FontWeight="Bold" />
+                        FontWeight="Bold" d:LayoutOverrides="Height" />
                     <TextBox
                         x:Name="descriptionActionTextBox"
                         Grid.Row="2"
@@ -411,10 +410,12 @@
                         Grid.ColumnSpan="3"
                         MinWidth="425"
                         MinHeight="23"
-                        Margin="3"
+                        Margin="9.8,65,0,55.2"
                         HorizontalAlignment="Left"
-                        VerticalAlignment="Top"
-                        Text="{Binding DescriptionAction, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+                        Text="{Binding DescriptionAction, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" d:LayoutOverrides="Height" />
+                    <TextBox Name="TextBoxP1Ticket" Margin="41,10,-16.8,-8.2" TextWrapping="Wrap" Text="P1 HPSM Ticket"/>
+                    <TextBox Name="TextBoxBridgeNumber" Grid.Column="1" Margin="76.8,10,3.8,-8.2" TextWrapping="Wrap" Text="Bridge"/>
+                    <TextBox Name="TextBoxChatRoom" Grid.Column="2" Margin="50.2,10,0.6,-8.2" TextWrapping="Wrap" Text="Chat URL" Grid.ColumnSpan="2"/>
 
                 </Grid>
             </TabItem>
