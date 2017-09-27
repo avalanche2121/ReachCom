@@ -309,7 +309,7 @@ namespace ReachComApp
 
 
                 _comReach.StartTime = TextBoxStartTime.Text;
-                //_comReach.P1Ticket = TextBoxP1Ticket.Text;
+                _comReach.P1Ticket = TextBoxP1Ticket.Text;
                 _comReach.BridgeNumber = TextBoxBridgeNumber.Text;
                 _comReach.ChatRoom = TextBoxChatRoom.Text;
 
@@ -324,14 +324,16 @@ namespace ReachComApp
 
             //Build GIM Related Questions
             Paragraph p1Ticket = new Paragraph();
-            p1Ticket.Inlines.Add(new Bold(new Run("P1 Ticket #:")));
+            p1Ticket.Inlines.Add(new Bold(new Run("P1 Ticket #: ")));
+            p1Ticket.Inlines.Add(new Run(_comReach.P1Ticket.ToString()));
+
 
             Paragraph firstQuestion = new Paragraph();
-            firstQuestion.Inlines.Add(new Bold(new Run("What is the issue? \r")));
+            firstQuestion.Inlines.Add(new Bold(new Run("What is the issue?\r")));
             firstQuestion.Inlines.Add(new Run(_comReach.ErrorDescription));
 
             Paragraph secondQuestion = new Paragraph();
-            secondQuestion.Inlines.Add(new Bold(new Run("What is the P1 impact?")));
+            secondQuestion.Inlines.Add(new Bold(new Run("What is the P1 impact? ")));
 
             //How many Calls?
             Paragraph textIssueParagraph = new Paragraph();
@@ -411,21 +413,19 @@ namespace ReachComApp
             thirdQuestion.Inlines.Add(new Bold(new Run("What is the Application Name & Seal ID of the application that is impacted? \r")));
             thirdQuestion.Inlines.Add(new Run("Application: "));
             thirdQuestion.Inlines.Add(new Run(_comReach.AppTitle));
-            thirdQuestion.Inlines.Add(new Run("\r Seal ID: "));
+            thirdQuestion.Inlines.Add(new Run("\rSeal ID: "));
             thirdQuestion.Inlines.Add(new Run(_comReach.SealId.ToString()));
 
 
 
             Paragraph fourthQuestion = new Paragraph();
-            fourthQuestion.Inlines.Add(new Bold(new Run("Are there any bridge or Skype Chats opened?")));
+            fourthQuestion.Inlines.Add(new Bold(new Run("Are there any bridge or Skype Chats opened? \r")));
 
-            Paragraph textBridgeNumber = new Paragraph();
-            textBridgeNumber.Inlines.Add(new Run("Bridge: "));
-            textBridgeNumber.Inlines.Add(new Run(_comReach.text.BridgeNumber));
-
-            Paragraph textChatRoom = new Paragraph();
-            textChatRoom.Inlines.Add(new Run("Chat URL: "));
-            textChatRoom.Inlines.Add(new Run(_comReach.ChatRoom));
+            fourthQuestion.Inlines.Add(new Run("Bridge: "));
+            fourthQuestion.Inlines.Add(new Run(_comReach.BridgeNumber.ToString()));
+            fourthQuestion.Inlines.Add(new Run("\r"));
+            fourthQuestion.Inlines.Add(new Run("Chat URL: "));
+            fourthQuestion.Inlines.Add(new Run(_comReach.ChatRoom.ToString()));
 
 
             Paragraph fifthQuestion = new Paragraph();
@@ -437,8 +437,6 @@ namespace ReachComApp
             RichTextBoxGIMEngagement.Document.Blocks.Add(textIssueParagraph);
             RichTextBoxGIMEngagement.Document.Blocks.Add(thirdQuestion);
             RichTextBoxGIMEngagement.Document.Blocks.Add(fourthQuestion);
-            RichTextBoxGIMEngagement.Document.Blocks.Add(textBridgeNumber);
-            RichTextBoxGIMEngagement.Document.Blocks.Add(textChatRoom);
             RichTextBoxGIMEngagement.Document.Blocks.Add(fifthQuestion);
 
         }
@@ -593,9 +591,9 @@ namespace ReachComApp
             TextBoxReports.Text = "0";
             TextBoxSla.Text = "0";
 
-            TextBoxP1Ticket.Text = "";
-            TextBoxBridgeNumber.Text = "";
-            TextBoxChatRoom.Text = "";
+            TextBoxP1Ticket.Text = "0";
+            TextBoxBridgeNumber.Text = "0000-0000";
+            TextBoxChatRoom.Text = "https://www.skype.com";
 
             TextBoxStartTime.Text = "00:00 AM/PM ET";
 

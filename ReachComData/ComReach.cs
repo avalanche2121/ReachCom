@@ -22,7 +22,11 @@ namespace ReachComData
         public  string SlaInfo { get; set; }
         public string StartTime { get; set; }
         public string ReputationalImpact { get; set; }
-        public string OtherIssue { get; set; }
+        public string OtherIssue { get; set; }  
+        public string BridgeNumber { get; set; }
+        public string ChatRoom { get; set; }
+
+        public string P1Ticket { get; set; }
 
     }
 }
