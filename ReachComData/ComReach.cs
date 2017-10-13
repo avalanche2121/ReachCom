@@ -25,8 +25,10 @@ namespace ReachComData
         public string OtherIssue { get; set; }  
         public string BridgeNumber { get; set; }
         public string ChatRoom { get; set; }
-
         public string P1Ticket { get; set; }
 
+        public string NaturalLanguageParagraph { get; set; }
+
+        public string NatLang { get; set; }
     }
 }

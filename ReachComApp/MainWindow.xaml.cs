@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using NaturalLanguage;
 
 namespace ReachComApp
 {
@@ -357,7 +358,7 @@ namespace ReachComApp
             //How many Reports impacted?
             if (CheckBoxReports.IsChecked != null && (bool)CheckBoxReports.IsChecked)
             {
-                textIssueParagraph.Inlines.Add(new Run(("Transactions Affected - ")));
+                textIssueParagraph.Inlines.Add(new Run(("Transactions Affected - "))); //
                 textIssueParagraph.Inlines.Add(new Run((_comReach.ReportCount)));
                 textIssueParagraph.Inlines.Add(new Run("\r"));
 
@@ -475,6 +476,10 @@ namespace ReachComApp
             //Issue Details
             Paragraph textIssueParagraph = new Paragraph();
 
+            if((bool)CheckBoxCustomerCalls.IsChecked == false && (bool)CheckBoxFinancial.IsChecked == false && (bool)CheckBoxTransactions.IsChecked == false)
+            {
+                textIssueParagraph.Inlines.Add(new Run("This is unchecked"));
+            }
 
             //How many Calls?
             if (CheckBoxCustomerCalls.IsChecked != null && (bool)CheckBoxCustomerCalls.IsChecked)
